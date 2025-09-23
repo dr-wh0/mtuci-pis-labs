@@ -1,9 +1,7 @@
-""" Вывод списка студентов группы с информацией о результатах экзаменов
+"""Вывод списка студентов группы с информацией о результатах экзаменов
 
 - print_students: Вывод списка студентов группы с информацией об экзаменах.
 """
-
-from typing import List
 
 # Список студентов группы с информацией об экзаменах
 groupmates = [
@@ -52,13 +50,13 @@ groupmates = [
 ]
 
 
-def print_students(students: List):
+def print_students(students: list) -> None:
     """Вывод списка всех студентов с информацией об экзаменах.
 
     Использует .ljust для выравнивания строк таблицы, вывод в кодировке Unicode.
 
     Args:
-        students (List): Список студентов группы для вывода.
+        students (list): Список студентов группы для вывода.
     """
     print(
         u"Имя".ljust(15),
@@ -75,4 +73,4 @@ def print_students(students: List):
         )
 
 
-print_students(groupmates)
+print_students(groupmates)  # Вызов функции вывода списка студентов
