@@ -94,16 +94,15 @@ def filter_students_by_avg(students: list, min_avg: float) -> list:
     ]
 
 
-if __name__ == "__main__":
-    print_students(groupmates)  # Вывод общего списка студентов
-    try:
-        threshold = float(input("\n\nВведите минимальный средний балл: "))
-    except ValueError:
-        print("Ошибка: необходимо ввести число!")
+print_students(groupmates)  # Вывод общего списка студентов
+try:
+    threshold = float(input("\n\nВведите минимальный средний балл: "))
+except ValueError:
+    print("Ошибка: необходимо ввести число!")
+else:
+    filtered = filter_students_by_avg(groupmates, threshold)
+    if filtered:
+        print(f"\nСтуденты со средним баллом >= {threshold}:")
+        print_students(filtered)  # Вывод списка студентов после фильтрации
     else:
-        filtered = filter_students_by_avg(groupmates, threshold)
-        if filtered:
-            print(f"\nСтуденты со средним баллом >= {threshold}:")
-            print_students(filtered)  # Вывод списка студентов после фильтрации
-        else:
-            print(f"\nНет студентов со средним баллом >= {threshold}.")
+        print(f"\nНет студентов со средним баллом >= {threshold}.")
