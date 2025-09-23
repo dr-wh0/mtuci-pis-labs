@@ -1,6 +1,7 @@
 """Вывод списка студентов группы с информацией о результатах экзаменов
 
 - print_students: Вывод списка студентов группы с информацией об экзаменах.
+- filter_students_by_avg: Фильтрация студентов по среднему баллу.
 """
 
 # Список студентов группы с информацией об экзаменах
@@ -73,4 +74,33 @@ def print_students(students: list) -> None:
         )
 
 
-print_students(groupmates)  # Вызов функции вывода списка студентов
+def filter_students_by_avg(students: list, min_avg: float) -> list:
+    """Фильтрация студентов по среднему баллу.
+
+    Args:
+        students (list): Список студентов группы.
+        min_avg (float): Минимальный средний балл для фильтрации.
+
+    Returns:
+        list: Список студентов, у которых средний балл >= min_avg.
+    """
+    return [
+        student
+        for student in students
+        if sum(student["marks"]) / len(student["marks"]) >= min_avg
+    ]
+
+
+if __name__ == "__main__":
+    print_students(groupmates)  # Вывод общего списка студентов
+    try:
+        threshold = float(input("\n\nВведите минимальный средний балл: "))
+    except ValueError:
+        print("Ошибка: необходимо ввести число!")
+    else:
+        filtered = filter_students_by_avg(groupmates, threshold)
+        if filtered:
+            print(f"\nСтуденты со средним баллом >= {threshold}:")
+            print_students(filtered)  # Вывод списка студентов после фильтрации
+        else:
+            print(f"\nНет студентов со средним баллом >= {threshold}.")
