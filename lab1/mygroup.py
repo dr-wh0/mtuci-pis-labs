@@ -64,13 +64,16 @@ def print_students(students: list) -> None:
         u"Фамилия".ljust(20),
         u"Экзамены".ljust(30),
         u"Оценки".ljust(20),
+        u"Средний балл".ljust(15),
     )
     for student in students:
+        avg_mark = sum(student["marks"]) / len(student["marks"])
         print(
             student["name"].ljust(15),
             student["surname"].ljust(20),
             str(student["exams"]).ljust(30),
             str(student["marks"]).ljust(20),
+            f"{avg_mark:.2f}".ljust(15),
         )
 
 
