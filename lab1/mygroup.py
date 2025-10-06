@@ -10,7 +10,7 @@ groupmates = [
         "name": "Дмитрий",
         "surname": "Шагаров",
         "exams": ["История", "ОС", "КТП"],
-        "marks": [3, 5, 5]
+        "marks": [4, 5, 5]
     },
     {
         "name": "Никита",
@@ -22,23 +22,23 @@ groupmates = [
         "name": "Максим",
         "surname": "Соловьев",
         "exams": ["АиГ", "ОС", "Физика"],
-        "marks": [5, 4, 5]
+        "marks": [5, 4, 4]
     },
     {
-        "name": "Алексей",
-        "surname": "Обласов",
+        "name": "Шалавасов",
+        "surname": "Александр",
         "exams": ["История", "КТП", "Физика"],
         "marks": [5, 5, 4]
     },
     {
-        "name": "Егор",
-        "surname": "Алексанов",
+        "name": "Овчинников",
+        "surname": "Павел",
         "exams": ["ИС", "Философия", "Электроника"],
         "marks": [3, 4, 4]
     },
     {
-        "name": "Данила",
-        "surname": "Мокров",
+        "name": "Черниговский",
+        "surname": "Павел",
         "exams": ["АиГ", "СиАОД", "КТП"],
         "marks": [5, 5, 3]
     }
@@ -71,7 +71,22 @@ def filter_students(students, min_avg):
     ]
 
 
-print_students(groupmates)
+print(
+        u"Имя".ljust(20),
+        u"Фамилия".ljust(20),
+        u"Экзамены".ljust(35),
+        u"Оценки".ljust(20),
+        u"Средний балл".ljust(20),
+    )
+for student in groupmates:
+    avg_mark = sum(student["marks"]) / len(student["marks"])
+    print(
+        student["name"].ljust(20),
+        student["surname"].ljust(20),
+        str(student["exams"]).ljust(35),
+        str(student["marks"]).ljust(20),
+        f"{avg_mark:.2f}".ljust(20),
+    )
 print("\n\n")
 threshold = float(input("Минимальный ср. балл: "))
 filtered = filter_students(groupmates, threshold)
