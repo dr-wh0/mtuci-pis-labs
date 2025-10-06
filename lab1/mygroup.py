@@ -73,7 +73,7 @@ def filter_students(students, min_avg):
 
 print_students(groupmates)
 print("\n\n")
-threshold = float(input("Минимальный средний балл: "))
+threshold = float(input("Минимальный ср. балл: "))
 filtered = filter_students(groupmates, threshold)
-print(f"\nСтуденты со средним баллом >= {threshold}:")
+print(f"\nСтуденты со ср. баллом >= {threshold}:")
 print_students(filtered)
