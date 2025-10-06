@@ -7,46 +7,40 @@
 # Список студентов группы с информацией об экзаменах
 groupmates = [
     {
-        "name": "Александр",
-        "surname": "Шалавасов",
-        "exams": ["УД", "СиАОД", "ОС"],
-        "marks": [5, 5, 5]
-    },
-    {
-        "name": "Серафим",
-        "surname": "Сухарев",
-        "exams": ["История", "АиГ", "КТП"],
-        "marks": [4, 5, 5]
-    },
-    {
-        "name": "Павел",
-        "surname": "Черниговский",
-        "exams": ["АиГ", "ИС", "ОС"],
-        "marks": [3, 4, 5]
+        "name": "Максим",
+        "surname": "Соловьев",
+        "exams": ["ОС", "История", "УД"],
+        "marks": [5, 4, 5]
     },
     {
         "name": "Алексей",
         "surname": "Обласов",
-        "exams": ["ОС", "КТП", "История"],
+        "exams": ["КТП", "История", "Физика"],
         "marks": [5, 4, 5]
     },
     {
-        "name": "Даниил",
-        "surname": "Кудряшов",
-        "exams": ["Философия", "ИС", "КТП"],
-        "marks": [3, 4, 4]
+        "name": "Никита",
+        "surname": "Шулапов",
+        "exams": ["ОС", "АиГ", "ИС"],
+        "marks": [5, 3, 4]
     },
     {
-        "name": "Глеб",
-        "surname": "Степанов",
-        "exams": ["СиАОД", "КТП", "АиГ"],
-        "marks": [5, 5, 3]
+        "name": "Дмитрий",
+        "surname": "Шагаров",
+        "exams": ["История", "ОС", "КТП"],
+        "marks": [3, 5, 5]
     },
     {
         "name": "Юрий",
         "surname": "Алексанов",
-        "exams": ["Философия", "КТП", "АиГ"],
-        "marks": [3, 5, 5]
+        "exams": ["ИС", "Электроника", "Философия"],
+        "marks": [4, 3, 4]
+    },
+    {
+        "name": "Никита",
+        "surname": "Молоканов",
+        "exams": ["КТП", "СиАОД", "АиГ"],
+        "marks": [5, 3, 5]
     }
 ]
 
@@ -60,20 +54,20 @@ def print_students(students: list) -> None:
         students (list): Список студентов группы для вывода.
     """
     print(
-        u"Имя".ljust(15),
+        u"Имя".ljust(20),
         u"Фамилия".ljust(20),
-        u"Экзамены".ljust(30),
+        u"Экзамены".ljust(50),
         u"Оценки".ljust(20),
-        u"Средний балл".ljust(15),
+        u"Средний балл".ljust(20),
     )
     for student in students:
         avg_mark = sum(student["marks"]) / len(student["marks"])
         print(
-            student["name"].ljust(15),
+            student["name"].ljust(20),
             student["surname"].ljust(20),
-            str(student["exams"]).ljust(30),
+            str(student["exams"]).ljust(50),
             str(student["marks"]).ljust(20),
-            f"{avg_mark:.2f}".ljust(15),
+            f"{avg_mark:.2f}".ljust(20),
         )
 
 
