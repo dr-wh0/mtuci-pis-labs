@@ -4,59 +4,52 @@
 - filter_students_by_avg: Фильтрация студентов по среднему баллу.
 """
 
-# Список студентов группы с информацией об экзаменах
+
 groupmates = [
-    {
-        "name": "Максим",
-        "surname": "Соловьев",
-        "exams": ["ОС", "История", "УД"],
-        "marks": [5, 4, 5]
-    },
-    {
-        "name": "Алексей",
-        "surname": "Обласов",
-        "exams": ["КТП", "История", "Физика"],
-        "marks": [5, 4, 5]
-    },
     {
         "name": "Никита",
         "surname": "Шулапов",
-        "exams": ["ОС", "АиГ", "ИС"],
-        "marks": [5, 3, 4]
+        "exams": ["КТП", "АиГ", "Философия"],
+        "marks": [4, 5, 3]
+    },
+    {
+        "name": "Максим",
+        "surname": "Соловьев",
+        "exams": ["Физика", "АиГ", "ОС"],
+        "marks": [4, 5, 5]
     },
     {
         "name": "Дмитрий",
         "surname": "Шагаров",
-        "exams": ["История", "ОС", "КТП"],
-        "marks": [3, 5, 5]
+        "exams": ["КТП", "История", "ОС"],
+        "marks": [5, 3, 5]
     },
     {
-        "name": "Юрий",
+        "name": "Алексей",
+        "surname": "Обласов",
+        "exams": ["Физика", "История", "КТП"],
+        "marks": [4, 5, 5]
+    },
+    {
+        "name": "Егор",
         "surname": "Алексанов",
-        "exams": ["ИС", "Электроника", "Философия"],
+        "exams": ["Электроника", "ИС", "Философия"],
         "marks": [4, 3, 4]
     },
     {
-        "name": "Никита",
-        "surname": "Молоканов",
-        "exams": ["КТП", "СиАОД", "АиГ"],
+        "name": "Мокров",
+        "surname": "Данила",
+        "exams": ["СиАОД", "КТП", "АиГ"],
         "marks": [5, 3, 5]
     }
 ]
 
 
-def print_students(students: list) -> None:
-    """Вывод списка всех студентов с информацией об экзаменах.
-
-    Использует .ljust для выравнивания строк таблицы, вывод в кодировке Unicode.
-
-    Args:
-        students (list): Список студентов группы для вывода.
-    """
+def print_students(students):
     print(
         u"Имя".ljust(20),
         u"Фамилия".ljust(20),
-        u"Экзамены".ljust(50),
+        u"Экзамены".ljust(35),
         u"Оценки".ljust(20),
         u"Средний балл".ljust(20),
     )
@@ -65,38 +58,22 @@ def print_students(students: list) -> None:
         print(
             student["name"].ljust(20),
             student["surname"].ljust(20),
-            str(student["exams"]).ljust(50),
+            str(student["exams"]).ljust(35),
             str(student["marks"]).ljust(20),
             f"{avg_mark:.2f}".ljust(20),
         )
 
 
-def filter_students_by_avg(students: list, min_avg: float) -> list:
-    """Фильтрация студентов по среднему баллу.
-
-    Args:
-        students (list): Список студентов группы.
-        min_avg (float): Минимальный средний балл для фильтрации.
-
-    Returns:
-        list: Список студентов, у которых средний балл >= min_avg.
-    """
+def filter_students(students, min_avg):
     return [
-        student
-        for student in students
+        student for student in students
         if sum(student["marks"]) / len(student["marks"]) >= min_avg
     ]
 
 
-print_students(groupmates)  # Вывод общего списка студентов
-try:
-    threshold = float(input("\n\nВведите минимальный средний балл: "))
-except ValueError:
-    print("Ошибка: необходимо ввести число!")
-else:
-    filtered = filter_students_by_avg(groupmates, threshold)
-    if filtered:
-        print(f"\nСтуденты со средним баллом >= {threshold}:")
-        print_students(filtered)  # Вывод списка студентов после фильтрации
-    else:
-        print(f"\nНет студентов со средним баллом >= {threshold}.")
+print_students(groupmates)
+print("\n\n")
+threshold = float(input("Минимальный средний балл: "))
+filtered = filter_students(groupmates, threshold)
+print(f"\nСтуденты со средним баллом >= {threshold}:")
+print_students(filtered)
