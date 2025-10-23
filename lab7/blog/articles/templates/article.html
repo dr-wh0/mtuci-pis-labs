@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/article.css' %}">
+</head>
+<body class="article">
+<div class="header">
+    <img src="{% static 'img/logo.png' %}"/>
+    <div class="header-links">
+        <a href="/">Все статьи</a>
+        <a href="{% url 'register' %}">Регистрация</a>
+        <a href="{% url 'login' %}">Вход</a>
+    </div>
+</div>
+
+<div class="article-content">
+    <h1>{{ post.title }}</h1>
+
+    <div class="article-info">
+        <div class="article-author"><b>{{ post.author.username }}</b></div>
+        <div class="article-created-date">{{ post.created_date }}</div>
+    </div>
+
+    <div class="article-text">
+        <p>{{ post.text }}</p>
+    </div>
+</div>
+</body>
+</html>
